@@ -1,8 +1,8 @@
 #include <ESP8266WiFi.h>
 
 // WiFi Bilgileri
-const char* ssid = "RANCHU-0718";
-const char* password = "71s3L1-6";
+const char* ssid = ".....";
+const char* password = "....";
 
 // Röle Pinleri
 int RolePin1 = D0;
