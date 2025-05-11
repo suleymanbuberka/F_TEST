@@ -1,0 +1,83 @@
+// C++ code
+//
+
+const int pin13 = 13;
+const int pin12 = 12;
+const int pin11 = 11;
+const int pin10 = 10;
+const int pin9 = 9;
+const int pin8 = 8;
+int  Line = 0;
+int Notr = 0;
+int PE = 0;
+int L_L;
+int L_N;
+int L_PE;
+int N_PE;
+int N_N;
+int PE_PE;
+
+void setup() {
+
+  pinMode(pin13, INPUT);
+  pinMode(pin12, INPUT);
+  pinMode(pin11, INPUT);
+  pinMode(pin10, OUTPUT);
+  pinMode(pin9, OUTPUT);
+  pinMode(pin8, OUTPUT);
+
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  //Teste Hazır hale gelmesi için
+  digitalWrite(8, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(10, LOW);
+  //Line kontrolü
+  digitalWrite(8, HIGH);
+  L_L = digitalRead(pin13); // line line kontrolü
+  L_N = digitalRead(pin12); // Line Notr kontrolü
+  L_PE = digitalRead(pin11); // Line Toprak kontrolü
+
+  digitalWrite(8, LOW);
+  digitalWrite(9, HIGH);
+  N_N = digitalRead(pin12); //Notr Notr kontrolü
+  N_PE = digitalRead(pin11);//Notr Toprak kontrolü
+
+  digitalWrite(9, LOW);
+  digitalWrite(10, HIGH);
+  PE_PE = digitalRead(pin11); //Toprak Kontrolü
+
+  Serial.println("------------------");
+  Serial.println("| Degisken | Deger |");
+  Serial.println("------------------");
+  
+  Serial.print("| L_L      | ");
+  Serial.print(L_L);
+  Serial.println("    |");
+
+  Serial.print("| L_N      | ");
+  Serial.print(L_N);
+  Serial.println("    |");
+
+  Serial.print("| L_PE      | ");
+  Serial.print(L_PE);
+  Serial.println("    |");
+  
+  Serial.print("| N_N      | ");
+  Serial.print(N_N);
+  Serial.println("    |");
+  
+  Serial.print("| N_PE      | ");
+  Serial.print(N_PE);
+  Serial.println("    |");
+  
+  Serial.print("| PE_PE      | ");
+  Serial.print(PE_PE);
+  Serial.println("    |");
+  Serial.println("------------------");
+
+  delay(5000);
+}
