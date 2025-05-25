@@ -1,0 +1,133 @@
+const int controlPin_1 = D2;
+const int controlPin_2 = D3;
+const int controlPin_3 = D4;
+
+const int readPin_1 = D6;
+const int readPin_2 = D7;
+const int readPin_3 = D8;
+
+int  Line;
+int Notr;
+int PE ;
+int L_L=0;
+int L_N=1;
+int L_PE=1;
+int N_PE=1;
+int N_N=0;
+int PE_PE=0;
+
+
+void setup() {
+  pinMode(controlPin_1, OUTPUT);
+  pinMode(controlPin_2, OUTPUT);
+  pinMode(controlPin_3, OUTPUT);
+  pinMode(readPin_1, INPUT_PULLUP); // Pull-up'ı etkinleştir
+  pinMode(readPin_2, INPUT_PULLUP); // Pull-up'ı etkinleştir
+  pinMode(readPin_3, INPUT_PULLUP); // Pull-up'ı etkinleştir
+  Serial.begin(115200);
+  Serial.println("Basit Transistor Testi");
+}
+
+void loop() {
+ /*  
+ 
+ //bu kod ile transistörün çalışıp çalışmadığı kontrol edilebilir.
+  digitalWrite(controlPin_1, HIGH); 
+  Serial.print("D6 HIGH, D7 Degeri: ");
+  Serial.println(digitalRead(readPin_1));
+  delay(2000);
+
+  
+  digitalWrite(controlPin, LOW);
+  Serial.print("D6 LOW, D7 Degeri: ");
+  Serial.println(digitalRead(readPin));
+  delay(1000); 
+*/
+//Teste Hazır hale gelmesi için
+  digitalWrite(controlPin_1, LOW);
+  digitalWrite(controlPin_2, LOW);
+  digitalWrite(controlPin_3, LOW);
+  delay(100);
+  //Line kontrolü
+  digitalWrite(controlPin_1, HIGH);
+  delay(100);
+  L_L = digitalRead(readPin_1); // line line kontrolü
+  L_N = digitalRead(readPin_2); // Line Notr kontrolü
+  L_PE = digitalRead(readPin_3); // Line Toprak kontrolü
+
+      Serial.println(L_L); //DÜZELTİLMESİ GEREKİYOR.
+      Serial.println(L_N);
+      Serial.println(L_PE);
+  /*digitalWrite(controlPin_1, LOW);
+  digitalWrite(controlPin_2, HIGH);
+   delay(100);
+  N_N = digitalRead(readPin_2); //Notr Notr kontrolü
+  N_PE = digitalRead(readPin_3);//Notr Toprak kontrolü
+
+  digitalWrite(controlPin_2, LOW);
+  digitalWrite(controlPin_3, HIGH);
+   delay(100);
+  PE_PE = digitalRead(readPin_3); //Toprak Kontrolü
+
+  Serial.println("------------------");
+  Serial.println("| Degisken | Deger |");
+  Serial.println("------------------");
+  
+  Serial.print("| L_L      | ");
+  Serial.print(L_L);
+  Serial.println("    |");
+
+  Serial.print("| L_N      | ");
+  Serial.print(L_N);
+  Serial.println("    |");
+
+  Serial.print("| L_PE      | ");
+  Serial.print(L_PE);
+  Serial.println("    |");
+  
+  Serial.print("| N_N      | ");
+  Serial.print(N_N);
+  Serial.println("    |");
+  
+  Serial.print("| N_PE      | ");
+  Serial.print(N_PE);
+  Serial.println("    |");
+  
+  Serial.print("| PE_PE      | ");
+  Serial.print(PE_PE);
+  Serial.println("    |");
+
+    // Test Sonucu Kontrolü
+  if (L_L == 0 && N_N == 0 && PE_PE == 0 && L_N == 1 && L_PE == 1 && N_PE == 1) {
+    Serial.println("TEST BAŞARILI");
+  } else {
+    Serial.println("TEST BAŞARISIZ");
+    if (L_L != 0) {
+      Serial.print("L_L = ");
+      Serial.println(L_L);
+    }
+    if (N_N != 0) {
+      Serial.print("N_N = ");
+      Serial.println(N_N);
+    }
+    if (PE_PE != 0) {
+      Serial.print("PE_PE = ");
+      Serial.println(PE_PE);
+    }
+    if (L_N != 1) {
+      Serial.print("L_N = ");
+      Serial.println(L_N);
+    }
+    if (L_PE != 1) {
+      Serial.print("L_PE = ");
+      Serial.println(L_PE);
+    }
+    if (N_PE != 1) {
+      Serial.print("N_PE = ");
+      Serial.println(N_PE);
+    }
+  }
+  Serial.println("------------------");
+  */
+delay(5000);
+}
